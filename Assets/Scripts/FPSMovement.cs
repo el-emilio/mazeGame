@@ -50,7 +50,7 @@ public class FPSMovement : MonoBehaviour
         sprintAction.action.performed += Sprint;
         sprintAction.action.canceled += Sprint;
 
-        crouchAction.action.performed += Crouch;
+       
     }
 
     private void OnDisable()
@@ -63,7 +63,6 @@ public class FPSMovement : MonoBehaviour
         sprintAction.action.performed -= Sprint;
         sprintAction.action.canceled -= Sprint;
 
-        crouchAction.action.performed -= Crouch;
     }
 
     private void Update()
