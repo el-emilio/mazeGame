@@ -10,11 +10,11 @@ public class EnemyAI : MonoBehaviour
     public State currentState = State.Patrol;
 
     [Header("Jugador")]
-    public Transform player;              // Si lo dejas vacio, busca el tag "Player"
+    public Transform player;              
     public string playerTag = "Player";
 
     [Header("Patrulla")]
-    public Transform[] waypoints;         // Opcional. Si esta vacio, patrulla al azar
+    public Transform[] waypoints;         
     public float patrolSpeed = 2f;
     public float waitTime = 1.5f;
     public float randomPatrolRadius = 8f;
@@ -31,7 +31,7 @@ public class EnemyAI : MonoBehaviour
     public float attackCooldown = 1.2f;
 
     [Header("Visual (opcional)")]
-    public Renderer bodyRenderer;         // Cambia de color segun el estado
+    public Renderer bodyRenderer;         
 
     NavMeshAgent agent;
     Vector3 startPos;
