@@ -10,11 +10,11 @@ public class EnemyAI : MonoBehaviour
     public State currentState = State.Patrol;
 
     [Header("Jugador")]
-    public Transform player;              // Si lo dejas vacio, busca el tag "Player"
+    public Transform player;              
     public string playerTag = "Player";
 
     [Header("Patrulla")]
-    public Transform[] waypoints;         // Opcional. Si esta vacio, patrulla al azar
+    public Transform[] waypoints;         
     public float patrolSpeed = 2f;
     public float waitTime = 1.5f;
     public float randomPatrolRadius = 8f;
@@ -31,7 +31,7 @@ public class EnemyAI : MonoBehaviour
     public float attackCooldown = 1.2f;
 
     [Header("Visual (opcional)")]
-    public Renderer bodyRenderer;         // Cambia de color segun el estado
+    public Renderer bodyRenderer;         
 
     NavMeshAgent agent;
     Vector3 startPos;
@@ -80,7 +80,6 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    // ---------- PATRULLA ----------
     void DoPatrol()
     {
         if (agent.pathPending) return;
@@ -111,7 +110,6 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    // ---------- DETECCION ----------
     bool CanSeePlayer(float dist)
     {
         if (dist > detectionRange) return false;
@@ -121,7 +119,6 @@ public class EnemyAI : MonoBehaviour
         return angle <= viewAngle * 0.5f;
     }
 
-    // ---------- ATAQUE ----------
     void DoAttack(float dist)
     {
         // Mirar al jugador
@@ -140,7 +137,6 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    // ---------- CAMBIO DE ESTADO ----------
     void SetState(State newState)
     {
         currentState = newState;
@@ -160,13 +156,13 @@ public class EnemyAI : MonoBehaviour
                 agent.isStopped = false;
                 agent.speed = chaseSpeed;
                 agent.stoppingDistance = attackRange * 0.8f;
-                SetColor(new Color(1f, 0.85f, 0.1f));    // amarillo
+                SetColor(new Color(1f, 0.85f, 0.1f));    
                 break;
 
             case State.Attack:
                 agent.isStopped = true;
-                attackTimer = attackCooldown;             // ataca de inmediato
-                SetColor(new Color(0.9f, 0.1f, 0.1f));   // rojo
+                attackTimer = attackCooldown;             
+                SetColor(new Color(0.9f, 0.1f, 0.1f));   
                 break;
         }
     }
@@ -176,7 +172,7 @@ public class EnemyAI : MonoBehaviour
         if (bodyRenderer != null) bodyRenderer.material.color = c;
     }
 
-    // ---------- GIZMOS (para ver los rangos en Scene) ----------
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
